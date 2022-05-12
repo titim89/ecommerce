@@ -1,0 +1,12 @@
+.imgCarrito{
+    display: flex;
+    height: auto;
+    align-items: center;
+
+}
+
+.imgCarrito img{
+    max-width: 40px;
+    height: auto;
+    padding: 5px;
+}
