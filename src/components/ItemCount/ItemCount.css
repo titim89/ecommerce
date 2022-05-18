@@ -1,0 +1,11 @@
+.contenedorBotones {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: darksalmon;
+}
+
+.contenedorBotones button{
+    width: 30px;
+    height: 30px;
+}

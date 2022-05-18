@@ -1,6 +1,7 @@
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemCount from './components/ItemCount/ItemCount';
 
 function App() {
   return (
@@ -8,17 +9,7 @@ function App() {
       <header className="App-header">
         <NavBar/>
         <ItemListContainer greeting="Bienvenidos a Bakery"/>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ItemCount/>
       </header>
     </div>
   );
