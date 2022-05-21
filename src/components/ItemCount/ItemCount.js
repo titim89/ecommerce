@@ -1,11 +1,11 @@
 import './ItemCount.css';
 import { useState } from 'react';
 
-const ItemCount = () => {
+const ItemCount = ({stock}) => {
     const [count, setCount] = useState(0);
 
     const increment = () => {
-        if (count >= 0) {
+        if (count >= 0 && stock>count) {
             setCount(count + 1)
         }
     }
@@ -17,17 +17,12 @@ const ItemCount = () => {
     }
 
     return (
-        <div style={{background: 'gray'}}>
-            <img src='../images/cheesecake.jpg' alt='cheesecake'></img>
-            <h2>Cheesecake</h2>
-            <p>$3500</p>
-            <div className='contenedorBotones'>
-                <button onClick={decrement}>-</button>
-                <p>Comprar</p>
-                <button onClick={increment}>+</button>
-            </div>
-            <h1>{count}</h1>
-        </div>
+        
+        <div className='contenedorBotones'>
+            <button onClick={decrement}>-</button>
+            <p>Comprar {count}</p>
+            <button onClick={increment}>+</button>
+        </div>      
     )   
 }
 
