@@ -1,5 +1,4 @@
-import Item from "../Item/Item"
-
+import Item from "../Item/Item";
 
 function ItemList ({products}) {
     return (
@@ -17,4 +16,4 @@ function ItemList ({products}) {
     ))
 }
 
-export default ItemList
+export default ItemList;

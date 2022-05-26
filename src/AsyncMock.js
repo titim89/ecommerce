@@ -87,6 +87,16 @@ export const getProducts = () => {
     return new Promise ((resolve) => {
         setTimeout(() => {
             resolve (productStock)
-        }, 2000)
+        }, 1000)
     })
-}
+};
+
+export const getProductsById = (id) => {
+    return new Promise (resolve => {
+        setTimeout(() => {
+            resolve(productStock.find(prod => prod.id === id))
+        }, 1000)
+    })
+};
+
+
