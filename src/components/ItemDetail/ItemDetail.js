@@ -1,15 +1,13 @@
 import './ItemDetail.css';
-import Card from 'react-bootstrap/Card'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import ItemCount from '../ItemCount/ItemCount'
-
-const stock = 10;
 
 const ItemDetail = ({id, name, price, img, desc, stock}) =>{
     
     return (
-        <Card style={{ maxWidth: '540px' }} key={id} className='detailContainer' >
+        <Card style={{ maxWidth: '1000px' }} key={id} className='detailContainer' >
           <Row className='g-0'>
             <Col md='4'>
               <Card.Img src={img} alt={name} fluid />

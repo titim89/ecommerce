@@ -2,26 +2,20 @@ import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-import { NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 const NavBar = () => {
     return (
-        <Navbar className="w-100" collapseOnSelect expand="lg" bg="light">
+        <Navbar className="w-100 navBar" collapseOnSelect expand="lg" bg="light">
             <Container>
-            <Navbar.Brand href="#home">BAKERY</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/">BAKERY</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto">
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
-                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
+                <Nav className="m-auto">
+                <Nav.Link as={Link} to="/category/tortas" className='navLink mx-5'>Tortas</Nav.Link>
+                <Nav.Link as={Link} to="/category/cuadraditos" className='navLink mx-5'>Cuadraditos</Nav.Link>
+                <Nav.Link as={Link} to="/category/cookies" className='navLink mx-5'>Cookies</Nav.Link>
                 </Nav>
                 <Nav>
                 <Nav.Link eventKey={2} href="#memes">

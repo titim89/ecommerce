@@ -1,13 +1,5 @@
-.navBar{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    background-color: aliceblue;
-    color: black;
-    position: absolute;
-    top: 0;
-
+.navBar .navLink{
+    font-size: 20px; 
 }
 
 .navBar .menu{

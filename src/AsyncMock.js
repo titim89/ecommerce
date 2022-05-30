@@ -1,7 +1,7 @@
 const productStock = [
 
     {
-        id: 1,
+        id: '1',
         name: "Cheesecake",
         price: 3500,
         img: "../images/cheesecake.jpg",
@@ -10,7 +10,7 @@ const productStock = [
         category: "tortas"
     },
     {
-        id: 2,
+        id: '2',
         name: "Lemonpie",
         price: 2200,
         img: "../images/lemonpie.jpg",
@@ -19,7 +19,7 @@ const productStock = [
         category: "tortas"
     },
     {
-        id: 3,
+        id: '3',
         name: "Torta brownie",
         price: 2200,
         img: "../images/brownie.jpg",
@@ -28,7 +28,7 @@ const productStock = [
         category: "tortas"
     },
     {
-        id: 4,
+        id: '4',
         name: "Carrotcake",
         price: 3000,
         img: "../images/carrotcake.jpg",
@@ -37,7 +37,7 @@ const productStock = [
         category: "tortas"
     },
     {
-        id: 5,
+        id: '5',
         name: "Torta manzana",
         price: 2200,
         img: "../images/manzana.jpg",
@@ -46,7 +46,7 @@ const productStock = [
         category: "tortas"
     },
     {
-        id: 6,
+        id: '6',
         name: "Red velvet",
         price: 2500,
         img: "../images/redvelvet.jpg",
@@ -55,7 +55,7 @@ const productStock = [
         category: "tortas"
     },   
     {
-        id: 7,
+        id: '7',
         name: "Marquise",
         price: 2200,
         img: "../images/marquise.jpg",
@@ -64,7 +64,7 @@ const productStock = [
         category: "tortas"
     },
     {
-        id: 8,
+        id: '8',
         name: "Rogel",
         price: 3500,
         img: "../images/rogel.jpg",
@@ -73,14 +73,86 @@ const productStock = [
         category: "tortas"
     }, 
     {
-        id: 9,
+        id: '9',
         name: "Torta oreo",
         price: 2800,
         img: "../images/oreo.jpg",
         desc: "Bizcochuelo de chocolate con relleno de crema de oreos, cubierto por ganache de chocolate y trozos de galletita oreo.",
         stock: 8,
         category: "tortas"
-    }           
+    },
+    {
+        id: '10',
+        name: "Cookies de vainilla y Chips",
+        price: 180,
+        img: "../images/vainilla.jpg",
+        desc: "Galletitas sabor vainilla con chips de chocolate amargo.",
+        stock: 20,
+        category: "cookies"
+    },
+    {
+        id: '11',
+        name: "Cookies de chocolate y Chips",
+        price: 180,
+        img: "../images/chocolate.jpg",
+        desc: "Galletitas sabor chocolate con chips de chocolate blanco.",
+        stock: 25,
+        category: "cookies"
+    },
+    {
+        id: '12',
+        name: "Cookies de jengibre",
+        price: 160,
+        img: "../images/jengibre.jpg",
+        desc: "Galletitas decoradas sabor jengibre y vainilla.",
+        stock: 18,
+        category: "cookies"
+    },
+    {
+        id: '13',
+        name: "Cookies de miel",
+        price: 140,
+        img: "../images/miel.jpg",
+        desc: "Galletitas livianas sabor miel.",
+        stock: 22,
+        category: "cookies"
+    },
+    {
+        id: '14',
+        name: "Cookies de chocolate rellenas",
+        price: 200,
+        img: "../images/rellena.jpg",
+        desc: "Galletitas sabor chocolate rellenas de chocolate blanco y chocolate con leche derretido.",
+        stock: 15,
+        category: "cookies"
+    },
+    {
+        id: '15',
+        name: "Brownies",
+        price: 220,
+        img: "../images/brownies.jpg",
+        desc: "Cuadraditos sabor chocolate",
+        stock: 20,
+        category: "cuadraditos"
+    },
+    {
+        id: '16',
+        name: "Lemonies",
+        price: 220,
+        img: "../images/lemonies.jpg",
+        desc: "Cuadraditos sabor limon con un suave glaseado",
+        stock: 22,
+        category: "cuadraditos"
+    },
+    {
+        id: '17',
+        name: "Cuadradito de coco",
+        price: 230,
+        img: "../images/coco.jpg",
+        desc: "Cuadraditos sabor coco rellenos con dulce de leche y masa de vainilla",
+        stock: 18,
+        category: "cuadraditos"
+    }                                                                                                        
 ]
 
 export const getProducts = () => {
@@ -95,8 +167,16 @@ export const getProductsById = (id) => {
     return new Promise (resolve => {
         setTimeout(() => {
             resolve(productStock.find(prod => prod.id === id))
-        }, 1000)
+        }, 500)
     })
 };
+
+export const getProductByCategory = (categoryId) => {
+    return new Promise (resolve => {
+        setTimeout(() => {
+            resolve(productStock.filter(prod => prod.category === categoryId))
+        }, 2000)
+    })
+}
 
 

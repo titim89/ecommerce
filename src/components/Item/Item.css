@@ -4,9 +4,15 @@
     margin: 5px;
 }
 
-img{
-    width: 100%;
+.cardContainer img{
+    width: 400px;
     height: 20vw;
     object-fit: cover;
+    
+}
+
+.cardContainer .boton{
+    text-decoration: none;
+    color: black;
 }
 
