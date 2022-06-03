@@ -18,3 +18,8 @@
     height: 100%;
     
 }
+
+.detailContainer .card-footer a{
+    text-decoration: none;
+    color: black;
+}

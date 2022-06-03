@@ -9,8 +9,6 @@ const ItemDetailContainer = () => {
 
     const {productId} = useParams()
 
-    console.log(productId)
-
     useEffect (() => {
         getProductsById(productId).then(response => {
             setProduct(response);
