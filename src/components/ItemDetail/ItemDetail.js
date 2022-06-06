@@ -3,15 +3,23 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ItemCount from '../ItemCount/ItemCount'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import CartContext from '../../context/CartContext';
+
 
 const ItemDetail = ({id, name, price, img, desc, stock}) =>{
   const [quantity, setQuantity] = useState(0);
 
-  const handleOnAdd = (count) => {
+  const {addItem} = useContext(CartContext)
+
+
+  const handleOnAdd = (quantity) => {
     console.log ('Agregar al carrito')
-    setQuantity(count)
+    setQuantity(quantity)
+
+    addItem({id, name, price, quantity})
+    
   }
     
     return (
@@ -28,8 +36,9 @@ const ItemDetail = ({id, name, price, img, desc, stock}) =>{
                   <small className='text-muted'>${price}</small>
                 </Card.Text>
                 <Card.Footer>
-                  { quantity > 0 ? <Link to='/cart'>Finalizar compra</Link> :
-                <ItemCount stock ={stock} onAdd={handleOnAdd}/>}
+                  { quantity > 0 
+                  ? <Link to='/cart'>Finalizar compra</Link> 
+                  :<ItemCount stock ={stock} onAdd={handleOnAdd}/>}
                 </Card.Footer>
               </Card.Body>
             </Col>

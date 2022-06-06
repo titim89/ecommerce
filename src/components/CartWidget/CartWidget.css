@@ -2,6 +2,8 @@
     display: flex;
     height: auto;
     align-items: center;
+    text-decoration: none;
+    color: black;
 
 }
 
