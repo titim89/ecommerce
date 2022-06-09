@@ -12,7 +12,7 @@ const Item = ({id, name, price, img}) =>{
                 <Card.Text>${price}</Card.Text>
             </Card.Body>
             <Card.Footer>
-                <Link to={`/detail/${id}`} className='boton'>Mas informacion</Link>
+                <Link to={`/detail/${id}`} className='boton'>Comprar</Link>
             </Card.Footer>
         </Card>
     )   

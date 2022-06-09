@@ -5,7 +5,8 @@ import { getProducts } from '../../AsyncMock';
 import { useParams } from 'react-router-dom';
 import { getProductByCategory } from '../../AsyncMock';
 import Spinner from 'react-bootstrap/Spinner'
-
+//import { getDocs, collection } from 'firebase/firestore';
+//import { db } from '../../services/firebase';
 
 const ItemListContainer = (props) => {
     const [items, setItems] = useState([]);
@@ -17,6 +18,8 @@ const ItemListContainer = (props) => {
     useEffect (() => {
 
         setLoading(true)
+
+        //getDocs(collection(db, 'products'))
 
         if(!categoryId) {
             getProducts().then(response => {

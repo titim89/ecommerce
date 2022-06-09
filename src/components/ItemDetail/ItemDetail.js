@@ -11,14 +11,13 @@ import CartContext from '../../context/CartContext';
 const ItemDetail = ({id, name, price, img, desc, stock}) =>{
   const [quantity, setQuantity] = useState(0);
 
-  const {addItem} = useContext(CartContext)
+  const {addItem, getProduct} = useContext(CartContext)
 
 
   const handleOnAdd = (quantity) => {
-    console.log ('Agregar al carrito')
     setQuantity(quantity)
 
-    addItem({id, name, price, quantity})
+    addItem({id, name, price, quantity, stock, img})
     
   }
     
@@ -38,7 +37,7 @@ const ItemDetail = ({id, name, price, img, desc, stock}) =>{
                 <Card.Footer>
                   { quantity > 0 
                   ? <Link to='/cart'>Finalizar compra</Link> 
-                  :<ItemCount stock ={stock} onAdd={handleOnAdd}/>}
+                  :<ItemCount stock ={stock} onAdd={handleOnAdd} initial={getProduct(id)?.quantity}/>}
                 </Card.Footer>
               </Card.Body>
             </Col>

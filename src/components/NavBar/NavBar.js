@@ -2,7 +2,7 @@ import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 const NavBar = () => {
@@ -13,9 +13,9 @@ const NavBar = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="m-auto">
-                <Nav.Link as={Link} to="/category/tortas" className='navLink mx-5'>Tortas</Nav.Link>
-                <Nav.Link as={Link} to="/category/cuadraditos" className='navLink mx-5'>Cuadraditos</Nav.Link>
-                <Nav.Link as={Link} to="/category/cookies" className='navLink mx-5'>Cookies</Nav.Link>
+                <Nav.Link as={NavLink} to="/category/tortas" className='navLink mx-5'>Tortas</Nav.Link>
+                <Nav.Link as={NavLink} to="/category/cuadraditos" className='navLink mx-5'>Cuadraditos</Nav.Link>
+                <Nav.Link as={NavLink} to="/category/cookies" className='navLink mx-5'>Cookies</Nav.Link>
                 </Nav>
                 <Nav>
                 <Nav.Link eventKey={2} href="#memes">
