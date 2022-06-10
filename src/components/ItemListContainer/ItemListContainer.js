@@ -1,43 +1,35 @@
 import './ItemListContainer.css';
 import { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
-import { getProducts } from '../../AsyncMock';
 import { useParams } from 'react-router-dom';
-import { getProductByCategory } from '../../AsyncMock';
 import Spinner from 'react-bootstrap/Spinner'
-//import { getDocs, collection } from 'firebase/firestore';
-//import { db } from '../../services/firebase';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { db } from '../../services/firebase';
 
 const ItemListContainer = (props) => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const { categoryId } = useParams()
 
 
     useEffect (() => {
-
         setLoading(true)
 
-        //getDocs(collection(db, 'products'))
+        const collectionRef = categoryId
+        
+        ? query(collection(db, 'productStock'), where('category', '==', categoryId))
+        : collection(db, 'productStock')
 
-        if(!categoryId) {
-            getProducts().then(response => {
-                setItems(response)
-            }).catch (error => {
-                alert('Error al cargar los productos')
-            }).finally(() => {
-                setLoading(false)
+        getDocs(collectionRef).then(response => {
+            const productStock = response.docs.map(doc => {
+                return {id: doc.id, ...doc.data()}
             })
-        } else {
-            getProductByCategory(categoryId).then(response => {
-                setItems(response)
-            }).catch(error => {
-                alert('Error al cargar los productos')
-            }).finally(() => {
-                setLoading(false)
-            })
-        }   
+            setItems(productStock)
+        }).catch(error => {
+            console.log(error)
+        }).finally(() => {
+            setLoading(false)
+        })
     }, [categoryId]);
 
     if(loading) {
