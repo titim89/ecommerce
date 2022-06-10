@@ -6,6 +6,7 @@ import ItemCount from '../ItemCount/ItemCount'
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartContext from '../../context/CartContext';
+import { Button } from '@mui/material';
 
 
 const ItemDetail = ({id, name, price, img, desc, stock}) =>{
@@ -24,10 +25,10 @@ const ItemDetail = ({id, name, price, img, desc, stock}) =>{
     return (
         <Card style={{ maxWidth: '1000px' }} key={id} className='detailContainer' >
           <Row className='g-0'>
-            <Col md='4'>
+            <Col>
               <Card.Img src={img} alt={name} fluid />
             </Col>
-            <Col md='8'>
+            <Col>
               <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{desc}</Card.Text>
@@ -35,8 +36,8 @@ const ItemDetail = ({id, name, price, img, desc, stock}) =>{
                   <small className='text-muted'>${price}</small>
                 </Card.Text>
                 <Card.Footer>
-                  { quantity > 0 
-                  ? <Link to='/cart'>Finalizar compra</Link> 
+                  { quantity > 0                  
+                  ?<Button variant="outlined" color="secondary" component={Link} to='/cart' style={{textDecoration: "none", margin: "5px"}}>Finalizar compra</Button>
                   :<ItemCount stock ={stock} onAdd={handleOnAdd} initial={getProduct(id)?.quantity}/>}
                 </Card.Footer>
               </Card.Body>

@@ -15,10 +15,11 @@ function App() {
       <BrowserRouter>
         <NavBar/>
         <Routes>
-          <Route path='/' element={<ItemListContainer greeting="Todos los productos"/>}></Route>
-          <Route path='/category/:categoryId' element={<ItemListContainer greeting="Productos por categoria"/>}></Route>
+          <Route path='/' element={<ItemListContainer greeting="Todos nuestros productos"/>}></Route>
+          <Route path='/category/:categoryId' element={<ItemListContainer greeting={"Productos por categoria"}/>}></Route>
           <Route path='/detail/:productId' element={<ItemDetailContainer/>}></Route>
           <Route path='/cart' element={<Cart/>}/>
+          <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
         </Routes>
       </BrowserRouter>
       </CartContextProvider>

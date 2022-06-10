@@ -1,6 +1,7 @@
 import './Item.css';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 const Item = ({id, name, price, img}) =>{
 
@@ -12,7 +13,7 @@ const Item = ({id, name, price, img}) =>{
                 <Card.Text>${price}</Card.Text>
             </Card.Body>
             <Card.Footer>
-                <Link to={`/detail/${id}`} className='boton'>Comprar</Link>
+                <Button variant="outlined" color="secondary" component={Link} to={`/detail/${id}`} style={{textDecoration: "none", margin: "5px"}}>Comprar</Button>
             </Card.Footer>
         </Card>
     )   

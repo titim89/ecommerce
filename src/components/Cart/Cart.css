@@ -4,10 +4,11 @@
     align-items: center;
     width: 100%;
     height: 80px;
-    background-color:azure;
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
+    box-shadow: -2px 4px 33px 1px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid #dadada;
 
 }
 
@@ -21,7 +22,8 @@
     align-items: center;
     height: 80px;
     width: 300px;
-    background-color: azure;
+    box-shadow: -2px 4px 33px 1px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid #dadada;
     border-radius: 5px;
     margin: 10px;
 }

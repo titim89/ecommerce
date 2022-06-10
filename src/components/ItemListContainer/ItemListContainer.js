@@ -41,7 +41,7 @@ const ItemListContainer = (props) => {
     
     return (
         <div>
-            <h1 style={{color: 'turquoise', margin: '20px'}}>{props.greeting}</h1>
+            <h1 style={{margin: '40px'}}>{props.greeting}</h1>
             <div className='contenedorCards'>
                 <ItemList products = {items}/>
             </div>

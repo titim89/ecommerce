@@ -4,8 +4,8 @@ import CartContext from "../../context/CartContext";
 import './Cart.css';
 import { Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-
+import SendIcon from '@mui/icons-material/Send';
+import { fontSize } from "@mui/system";
 
 
 const Cart = () => {
@@ -15,7 +15,7 @@ const Cart = () => {
     if(getQuantity() === 0){
         return (
             <div>
-                <p>No hay productos en el carrito</p>
+                <p style={{margin: "40px", fontSize: "3rem"}}>No hay productos en el carrito</p>
                 <Button variant="outlined" color="secondary" component={Link} to="/" style={{textDecoration: "none", margin: "5px"}}>Ver productos</Button>
             </div>
         )
@@ -23,7 +23,7 @@ const Cart = () => {
     
     return(
         <div style={{display: "flex", flexDirection: "column", alignItems: "center"}} >
-            <h1>Cart</h1>
+            <h1 style={{margin: "40px"}}>Cart</h1>
             <div style={{display: "flex", flexDirection: "column",justifyContent: "center", width: "1000px"}}>
                 {cart.map(item => {
                     return(
@@ -42,8 +42,9 @@ const Cart = () => {
             </div>
             <div className="total">Total: ${getTotal()}</div>
             <div>
-                <Button variant="outlined" color="secondary" onClick={() => cleanCart()}>Vaciar</Button>
+                <Button variant="outlined" color="secondary" onClick={() => cleanCart()} startIcon={<DeleteIcon />}>Vaciar</Button>
                 <Button variant="outlined" color="secondary" component={Link} to="/" style={{textDecoration: "none", margin: "5px"}}>Seguir comprando</Button>
+                <Button variant="outlined" color="secondary" endIcon={<SendIcon />}> Crear Orden</Button>
             </div>
         </div>
     )

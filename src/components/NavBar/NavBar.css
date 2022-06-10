@@ -1,3 +1,8 @@
+.navBar{
+    box-shadow: -2px 4px 33px 1px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid #dadada;
+}
+
 .navBar .navLink{
     font-size: 20px; 
 }
