@@ -18,9 +18,7 @@ const NavBar = () => {
                 <Nav.Link as={NavLink} to="/category/cookies" className='navLink mx-5'>Cookies</Nav.Link>
                 </Nav>
                 <Nav>
-                <Nav.Link eventKey={2} href="#memes">
                     <CartWidget />
-                </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
             </Container>

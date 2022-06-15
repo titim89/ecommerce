@@ -6,6 +6,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartContextProvider } from './context/CartContext';
 import Cart from './components/Cart/Cart';
+import { Form } from 'react-bootstrap';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/category/:categoryId' element={<ItemListContainer greeting={"Productos por categoria"}/>}></Route>
           <Route path='/detail/:productId' element={<ItemDetailContainer/>}></Route>
           <Route path='/cart' element={<Cart/>}/>
+          <Route path='/form' element={<Form/>}/>
           <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
         </Routes>
       </BrowserRouter>
