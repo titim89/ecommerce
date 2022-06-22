@@ -10,24 +10,19 @@ import { db, collectionRef } from "../../services/firebase";
 import { Spinner } from "react-bootstrap";
 
 
+
 const Cart = () => {
     const [loading, setLoading] = useState(false)
 
     const { cart, removeItem, cleanCart, getTotal, getQuantity } = useContext(CartContext)
 
     
-    const createOrder = () => {
+    const createOrder = (buyer) => {
         
         setLoading(true)
 
         const objOrder = {
-            buyer: {
-                name: 'Pepe',
-                email: 'pepe@hotmail.com',
-                phone: '123456789',
-                address: 'direccion 12345',
-                comment: 'comentario'
-            },
+            buyer,
             items: cart,
             total: getTotal()
         }
@@ -112,7 +107,8 @@ const Cart = () => {
             <div>
                 <Button variant="outlined" color="secondary" onClick={() => cleanCart()} startIcon={<DeleteIcon />}>Vaciar</Button>
                 <Button variant="outlined" color="secondary" component={Link} to="/" style={{textDecoration: "none", margin: "5px"}}>Seguir comprando</Button>
-                <Button variant="outlined" color="secondary" onClick={createOrder} endIcon={<SendIcon />}> Crear Orden</Button>
+                
+                <Button variant="outlined" color="secondary" component={Link} to="/Form" style={{textDecoration: "none", margin: "5px"}}>Crear orden</Button>
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ import CartContext from '../../context/CartContext';
 import { Button } from '@mui/material';
 
 
-const ItemDetail = ({id, name, price, img, desc, stock}) =>{
+const ItemDetail = ({id, name, price, img, desc, stock}) => {
   const [quantity, setQuantity] = useState(0);
 
   const {addItem, getProduct} = useContext(CartContext)
@@ -26,7 +26,7 @@ const ItemDetail = ({id, name, price, img, desc, stock}) =>{
         <Card style={{ maxWidth: '1000px' }} key={id} className='detailContainer' >
           <Row className='g-0'>
             <Col>
-              <Card.Img src={img} alt={name} fluid />
+              <Card.Img src={img} alt={name} />
             </Col>
             <Col>
               <Card.Body>

@@ -16,6 +16,7 @@ const NavBar = () => {
                 <Nav.Link as={NavLink} to="/category/tortas" className='navLink mx-5'>Tortas</Nav.Link>
                 <Nav.Link as={NavLink} to="/category/cuadraditos" className='navLink mx-5'>Cuadraditos</Nav.Link>
                 <Nav.Link as={NavLink} to="/category/cookies" className='navLink mx-5'>Cookies</Nav.Link>
+                <Nav.Link as={NavLink} to="/form" className='navLink mx-5'>Formulario</Nav.Link>
                 </Nav>
                 <Nav>
                     <CartWidget />
