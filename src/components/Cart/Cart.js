@@ -1,79 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../../context/CartContext";
 import './Cart.css';
 import { Button, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import SendIcon from '@mui/icons-material/Send';
-import { addDoc, collection, getDocs, query, where, documentId, writeBatch } from "firebase/firestore";
-import { db, collectionRef } from "../../services/firebase";
-import { Spinner } from "react-bootstrap";
-
 
 
 const Cart = () => {
-    const [loading, setLoading] = useState(false)
 
     const { cart, removeItem, cleanCart, getTotal, getQuantity } = useContext(CartContext)
-
-    
-    const createOrder = (buyer) => {
-        
-        setLoading(true)
-
-        const objOrder = {
-            buyer,
-            items: cart,
-            total: getTotal()
-        }
-
-        const ids = cart.map(item => item.id)
-
-        const batch = writeBatch(db)
-
-        const outOfStock = []
-
-        const collectionRef = collection(db, 'productStock')
-
-        getDocs(query(collectionRef, where(documentId(), 'in', ids)))
-            .then(response => {
-                response.docs.forEach(doc => {
-                    const dataDoc = doc.data()
-
-                    const prodQuantity = cart.find(item => item.id === doc.id)?.quantity
-                    
-                    if(dataDoc.stock >= prodQuantity) {
-                        batch.update(doc.ref, { stock: dataDoc.stock - prodQuantity})
-                    } else {
-                        outOfStock.push({id: doc.id, ...dataDoc})
-                    }
-                })
-            }).then(() => {
-                if(outOfStock.length === 0) {
-                    const collectionRef = collection(db, 'orders')
-
-                    return addDoc(collectionRef, objOrder)
-                } else {
-                    return Promise.reject({type: 'out_of_stock', products: outOfStock})
-                }
-                
-            }).then(({id}) => {
-                batch.commit()
-                console.log(`el id de la orden es ${id}`)
-                cleanCart()
-            }).catch(error => {
-                console.log(error)
-            }).finally(() => {
-                setLoading(false)
-            })    
-    }
-
-    if(loading) {
-        return (
-            <Spinner animation="grow" role="status" className='spinner'></Spinner>
-        )
-    }
-    
 
     if(getQuantity() === 0){
         return (
