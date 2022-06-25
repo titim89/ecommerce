@@ -2,11 +2,12 @@ import './ItemListContainer.css';
 import { useState, useEffect } from 'react';
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from '../Spinner/Spinner';
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../services/firebase';
+import ImgByCategory from './ImgByCategory';
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const { categoryId } = useParams()
@@ -33,15 +34,16 @@ const ItemListContainer = (props) => {
     }, [categoryId]);
 
     if(loading) {
-        
         return (
-            <Spinner animation="grow" role="status" className='spinner'></Spinner>
+          <Spinner />
         )
-    }
+      }
     
     return (
         <div>
-            <h1 style={{margin: '40px'}}>{props.greeting}</h1>
+            <div>
+                <ImgByCategory imgCategory={categoryId}/>
+            </div>
             <div className='contenedorCards'>
                 <ItemList products = {items}/>
             </div>

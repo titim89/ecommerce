@@ -35,9 +35,15 @@ const ItemDetail = ({id, name, price, img, desc, stock}) => {
                 <Card.Text>
                   <small className='text-muted'>${price}</small>
                 </Card.Text>
+                <Card.Text>
+                <small className='text-muted'>{stock} unidades en stock</small>
+                </Card.Text>
                 <Card.Footer>
                   { quantity > 0                  
-                  ?<Button variant="outlined" color="secondary" component={Link} to='/cart' style={{textDecoration: "none", margin: "5px"}}>Finalizar compra</Button>
+                  ?<div>
+                      <Button variant="outlined" color="secondary" component={Link} to="/" style={{textDecoration: "none", margin: "5px"}}>Seguir comprando</Button>
+                      <Button variant="outlined" color="secondary" component={Link} to='/cart' style={{textDecoration: "none", margin: "5px"}}>Finalizar compra</Button>
+                  </div>
                   :<ItemCount stock ={stock} onAdd={handleOnAdd} initial={getProduct(id)?.quantity}/>}
                 </Card.Footer>
               </Card.Body>

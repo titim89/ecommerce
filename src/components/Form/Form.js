@@ -7,8 +7,10 @@ import { Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import { addDoc, collection, getDocs, query, where, documentId, writeBatch } from "firebase/firestore";
 import { db } from "../../services/firebase";
-import { Spinner } from "react-bootstrap";
+import Spinner from "../Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+
 
 
 const Form = () => {
@@ -16,9 +18,16 @@ const Form = () => {
   const { cart, cleanCart, getTotal } = useContext(CartContext)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  
+  
   const [buyer, setBuyer] = useState({
     name: '',
-    surname: ''
+    surname: '',
+    email: '',
+    repeatEmail: '',
+    address: '',
+    phone: '',
+    comment: ''
   })
 
   const createOrder = () => {
@@ -63,40 +72,47 @@ const Form = () => {
             
         }).then(({id}) => {
             batch.commit()
-            console.log(`el id de la orden es ${id}`)
             cleanCart()
             navigate('/')
+            Swal.fire({
+              icon: 'success',
+              title: 'La compra se realizo con exito',
+              text: `El id de la orden es: ${id}`,
+            })
+            
         }).catch(error => {
-            console.log(error)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No tenemos suficiente stock',
+          })
         }).finally(() => {
             setLoading(false)
         })    
   }
-  
-  const { register, handleSubmit } = useForm();
 
-  const onSubmit = data => console.log(data);
+  const { register, handleSubmit } = useForm();
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setBuyer((buyer) => {
         return { ...buyer, [name]: value }
     })
-}
+  }
 
   if(loading) {
     return (
-        <Spinner animation="grow" role="status" className='spinner'></Spinner>
+      <Spinner />
     )
   }
-
   
   return (
     <div>
       <div>
         <h2>Complete el formulario para finalizar la compra</h2>
-        <form onSubmit={handleSubmit(onSubmit)} >
-          <input 
+        <form onSubmit={handleSubmit(createOrder)} >
+          <label>Nombre:</label>
+          <input
             type="text" 
             name="name"
             value={buyer.name}
@@ -104,6 +120,7 @@ const Form = () => {
             {...register("name", { required: true, maxLength: 80})}
             onChange={handleChange} 
              />
+          <label>Apellido:</label>   
           <input 
             type="text"
             name="surname"
@@ -111,32 +128,54 @@ const Form = () => {
             placeholder="Ingrese su apellido"
             {...register("surname", { required: true, maxLength: 80 })} 
             onChange={handleChange}
-             />  
-          {/* <input
-            type="email"
-            name="email" 
-            placeholder="example@example.com"
-            {...register("email", { required: true })} 
              />
+          <label>Mail:</label>     
+          <input
+            type="email"
+            name="email"
+            value={buyer.email} 
+            placeholder="example@example.com"
+            {...register("email", { required: true })}
+            onChange={handleChange} 
+             /> 
+          <label>Repetir Mail:</label>     
+          <input
+            type="email"
+            name="repeatemail"
+            value={buyer.repeatEmail} 
+            placeholder="example@example.com"
+            {...register("repeatEmail", { required: true })}
+            onChange={handleChange} 
+             />  
+          <label>Direccion:</label>   
           <input 
             type="text"
-            name="direccion"
+            name="address"
+            value={buyer.address}
             placeholder="ingrese su direccion"
-            {...register("direccion", { required: true })} 
+            {...register("address", { required: true })}
+            onChange={handleChange} 
             />
+          <label>Telefono:</label>
           <input 
-            type="number"
-            name="telefono"
+            type="tel"
+            name="phone"
+            value={buyer.phone}
+            pattern="[0-9]{10}"
             placeholder="ingrese su numero de telefono"
-            {...register("telefono", { required: true })} 
+            {...register("phone", { required: true })} 
+            onChange={handleChange}
              /> 
+          <label>Comentario:</label>
           <textarea
             type="text"
-            name="comentario"
+            name="comment"
+            value={buyer.comment}
             placeholder="ingrese informacion extra que crea necesaria"
-            {...register("comentario")} 
-             />   */}
-          <Button className="button" variant="outlined" color="secondary" onClick={createOrder} endIcon={<SendIcon />}> Crear Orden</Button>
+            {...register("comment")}
+            onChange={handleChange} 
+             />  
+            <Button type="submit" className="button" variant="outlined" color="secondary" endIcon={<SendIcon />}> Finalizar compra</Button>  
         </form>
       </div>
     </div>  

@@ -42,8 +42,7 @@ const Cart = () => {
             <div>
                 <Button variant="outlined" color="secondary" onClick={() => cleanCart()} startIcon={<DeleteIcon />}>Vaciar</Button>
                 <Button variant="outlined" color="secondary" component={Link} to="/" style={{textDecoration: "none", margin: "5px"}}>Seguir comprando</Button>
-                
-                <Button variant="outlined" color="secondary" component={Link} to="/Form" style={{textDecoration: "none", margin: "5px"}}>Crear orden</Button>
+                <Button variant="outlined" color="secondary" component={Link} to="/Form" style={{textDecoration: "none", margin: "5px"}}>Checkout</Button>
             </div>
         </div>
     )

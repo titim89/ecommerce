@@ -1,5 +1,5 @@
 h2{
-    margin: 20px;
+    margin: 30px;
 }
 
 form {
@@ -9,7 +9,7 @@ form {
     margin: 0 auto;
 }
 
-form input {
+form input, textarea {
     width: 500px;
     border-radius: 4px;
     border: 1px solid white;

@@ -8,6 +8,7 @@ import { CartContextProvider } from './context/CartContext';
 import Cart from './components/Cart/Cart';
 import Footer from './components/Footer/Footer';
 import Form from './components/Form/Form';
+import Home from './components/Home/Home';
 
 
 function App() {
@@ -16,14 +17,16 @@ function App() {
       <CartContextProvider>
       <BrowserRouter>
         <NavBar/>
-        <Routes>
-          <Route path='/' element={<ItemListContainer greeting="Todos nuestros productos"/>}></Route>
-          <Route path='/category/:categoryId' element={<ItemListContainer greeting={"Productos por categoria"}/>}></Route>
-          <Route path='/detail/:productId' element={<ItemDetailContainer/>}></Route>
-          <Route path='/cart' element={<Cart/>}/>
-          <Route path='/form' element={<Form/>}/>
-          <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
-        </Routes>
+        <div className='main'>
+          <Routes>
+            <Route path='/' element={<Home prod="Conoce nuestros productos"/>}></Route>
+            <Route path='/category/:categoryId' element={<ItemListContainer/>}></Route>
+            <Route path='/detail/:productId' element={<ItemDetailContainer/>}></Route>
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/form' element={<Form/>}/>
+            <Route path='*' element={<h1>PAGE NOT FOUND</h1>} />
+          </Routes>
+        </div>
         <Footer/>
       </BrowserRouter>
       </CartContextProvider>

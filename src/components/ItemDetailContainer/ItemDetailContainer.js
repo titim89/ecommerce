@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-import { Spinner } from 'react-bootstrap';
+import Spinner from '../Spinner/Spinner';
 
 
 
@@ -27,9 +27,9 @@ const ItemDetailContainer = () => {
 
     if(loading) {
         return (
-            <Spinner animation="grow" role="status" className='spinner'></Spinner>
+          <Spinner />
         )
-    }
+      }
 
     return (
         <div className='containerDetail'>
