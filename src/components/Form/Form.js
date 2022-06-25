@@ -142,7 +142,7 @@ const Form = () => {
           <input
             type="email"
             name="repeatemail"
-            value={buyer.repeatEmail} 
+            value={buyer.repeatEmail}
             placeholder="example@example.com"
             {...register("repeatEmail", { required: true })}
             onChange={handleChange} 
