@@ -6,8 +6,6 @@ import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import Spinner from '../Spinner/Spinner';
 
-
-
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState();
     const [loading, setLoading] = useState(true)
@@ -29,7 +27,7 @@ const ItemDetailContainer = () => {
         return (
           <Spinner />
         )
-      }
+    }
 
     return (
         <div className='containerDetail'>
