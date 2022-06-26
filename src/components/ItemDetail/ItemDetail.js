@@ -17,40 +17,38 @@ const ItemDetail = ({id, name, price, img, desc, stock}) => {
 
   const handleOnAdd = (quantity) => {
     setQuantity(quantity)
-
-    addItem({id, name, price, quantity, stock, img})
-    
+    addItem({id, name, price, quantity, stock, img}) 
   }
     
     return (
-        <Card style={{ maxWidth: '1000px' }} key={id} className='detailContainer' >
-          <Row className='g-0'>
-            <Col>
-              <Card.Img src={img} alt={name} />
-            </Col>
-            <Col>
-              <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>{desc}</Card.Text>
-                <Card.Text>
-                  <small className='text-muted'>${price}</small>
-                </Card.Text>
-                <Card.Text>
-                <small className='text-muted'>{stock} unidades en stock</small>
-                </Card.Text>
-                <Card.Footer>
-                  { quantity > 0                  
-                  ?<div>
-                      <Button variant="outlined" color="secondary" component={Link} to="/" style={{textDecoration: "none", margin: "5px"}}>Seguir comprando</Button>
-                      <Button variant="outlined" color="secondary" component={Link} to='/cart' style={{textDecoration: "none", margin: "5px"}}>Finalizar compra</Button>
-                  </div>
-                  :<ItemCount stock ={stock} onAdd={handleOnAdd} initial={getProduct(id)?.quantity}/>}
-                </Card.Footer>
-              </Card.Body>
-            </Col>
-          </Row>
-        </Card>
-      );
+      <Card style={{ maxWidth: '1000px' }} key={id} className='detailContainer' >
+        <Row className='g-0'>
+          <Col>
+            <Card.Img src={img} alt={name} />
+          </Col>
+          <Col>
+            <Card.Body>
+              <Card.Title>{name}</Card.Title>
+              <Card.Text>{desc}</Card.Text>
+              <Card.Text>
+                <small className='text-muted'>${price}</small>
+              </Card.Text>
+              <Card.Text>
+              <small className='text-muted'>{stock} unidades en stock</small>
+              </Card.Text>
+              <Card.Footer>
+                { quantity > 0                  
+                ?<div>
+                    <Button variant="outlined" color="secondary" component={Link} to="/" style={{textDecoration: "none", margin: "5px"}}>Seguir comprando</Button>
+                    <Button variant="outlined" color="secondary" component={Link} to='/cart' style={{textDecoration: "none", margin: "5px"}}>Finalizar compra</Button>
+                </div>
+                :<ItemCount stock ={stock} onAdd={handleOnAdd} initial={getProduct(id)?.quantity}/>}
+              </Card.Footer>
+            </Card.Body>
+          </Col>
+        </Row>
+      </Card>
+    );
 }
 
 export default ItemDetail;

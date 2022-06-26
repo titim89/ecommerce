@@ -19,19 +19,17 @@ const Form = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   
-  
   const [buyer, setBuyer] = useState({
     name: '',
     surname: '',
     email: '',
-    repeatEmail: '',
     address: '',
     phone: '',
     comment: ''
   })
 
   const createOrder = () => {
-        
+      
     setLoading(true)
     
     const objOrder = {
@@ -93,6 +91,7 @@ const Form = () => {
 
   const { register, handleSubmit } = useForm();
 
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setBuyer((buyer) => {
@@ -133,20 +132,12 @@ const Form = () => {
           <input
             type="email"
             name="email"
+            id="email"
             value={buyer.email} 
             placeholder="example@example.com"
             {...register("email", { required: true })}
             onChange={handleChange} 
              /> 
-          <label>Repetir Mail:</label>     
-          <input
-            type="email"
-            name="repeatemail"
-            value={buyer.repeatEmail}
-            placeholder="example@example.com"
-            {...register("repeatEmail", { required: true })}
-            onChange={handleChange} 
-             />  
           <label>Direccion:</label>   
           <input 
             type="text"
@@ -161,7 +152,6 @@ const Form = () => {
             type="tel"
             name="phone"
             value={buyer.phone}
-            pattern="[0-9]{10}"
             placeholder="ingrese su numero de telefono"
             {...register("phone", { required: true })} 
             onChange={handleChange}
